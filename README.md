@@ -1,5 +1,6 @@
 # PacMan
 Utility to configure build tools to use security gateway as package repository.
+Refer to [https://safedep.io](https://safedep.io) for more details.
 
 `pacman` aka. `Package Manager` inspired by the `pacman` is a tool for easily configuring various package managers such as Gradle, Maven etc. to use the security gateway for downloading required dependencies.
 
