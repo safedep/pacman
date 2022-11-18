@@ -17,6 +17,7 @@ function print_usage() {
   printf "\n"
   printf "Arguments:\n"
   printf "\t configure\n"
+  printf "\t configure-from-env\n"
   printf "\t setup-gradle\n"
   printf "\t setup-maven\n"
   printf "\t clean\n"
@@ -66,6 +67,9 @@ function main() {
   loadConfigurationIfPresent
   applyOverrides
   case $command in
+    configure-from-env)
+      configureFromEnv
+      ;;
     configure)
       interactiveConfiguration
       ;;
