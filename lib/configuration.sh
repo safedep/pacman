@@ -39,3 +39,9 @@ GATEWAY_USERNAME=$username
 GATEWAY_PASSWORD=$password
 _EOF
 }
+
+function applyConfigSecurity() {
+  if [ -f "$configurationPath" ]; then
+    chmod 600 $configurationPath
+  fi
+}

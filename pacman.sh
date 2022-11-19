@@ -66,6 +66,7 @@ function main() {
 
   loadConfigurationIfPresent
   applyOverrides
+
   case $command in
     configure-from-env)
       configureFromEnv
@@ -88,6 +89,8 @@ function main() {
       error_msg "Unknown command: $command"
       ;;
   esac
+
+  applyConfigSecurity
 }
 
 main $@
