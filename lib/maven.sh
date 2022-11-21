@@ -11,6 +11,8 @@ function setupMaven() {
 
   if [ -f "$mavenScriptDst" ]; then
     warn_msg "Overwriting $mavenScriptDst"
+  else
+    print_msg "Writing gateway config in $mavenScriptDst"
   fi;
 
   cat $mavenScriptSrc | \
