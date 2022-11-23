@@ -53,6 +53,15 @@ function applyOverrides() {
 	fi
 }
 
+function configurePm() {
+  scriptName=$1
+
+  validateRunningEnv
+  applyOverrides
+
+  loadScript $scriptName
+}
+
 function main() {
   loadScript "utils"
   loadScript "conventions"
@@ -65,8 +74,6 @@ function main() {
   fi;
 
   loadConfigurationIfPresent
-  applyOverrides
-
   case $command in
     configure-from-env)
       configureFromEnv
@@ -75,12 +82,10 @@ function main() {
       interactiveConfiguration
       ;;
     setup-gradle)
-      validateRunningEnv
-      loadScript "gradle"
+      configurePm "gradle"
       ;;
     setup-maven)
-      validateRunningEnv
-      loadScript "maven"
+      configurePm "maven"
       ;;
     clean)
       loadScript "clean"
