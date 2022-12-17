@@ -1,5 +1,5 @@
 mavenScriptSrc="$BASEDIR/data/maven-settings.xml"
-mavenScriptDst="$HOME/.m2/settings.xml"
+mavenScriptDst="$HOME/$MAVEN_M2_SETTINGS_PATH"
 
 function setupMaven() {
   gatewayURL=$1

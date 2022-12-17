@@ -1,0 +1,47 @@
+name: Pacman
+description: SafeDep Package Manager Manager
+
+inputs:
+  gateway_url:
+    type: string
+    description: SafeDep Gateway URL (e.g. https://gateway.url)
+    required: true
+  gateway_username:
+    type: string
+    description: SafeDep Gateway username
+    required: true
+  gateway_password:
+    type: string
+    description: SafeDep Gateway password
+    required: true
+  package_manager:
+    type: choice
+    description: The package manager to configure
+    required: true
+    options:
+    - maven
+    - gradle
+    - pip
+
+branding:
+  icon: "git-branch"
+  color: "green"
+
+runs:
+  using: composite
+  steps:
+    - name: Configure pacman
+      shell: bash
+      run: |
+        ${{ github.action_path }}/pacman.sh configure-from-env
+      env:
+        GATEWAY_URL: ${{ inputs.gateway_url }}
+        GATEWAY_USERNAME: ${{ inputs.gateway_username }}
+        GATEWAY_PASSWORD: ${{ inputs.gateway_password }}
+        GATEWAY_PROJECT_ID: ${{ github.event.repository.name }}
+
+    - name: Configure ${{ inputs.package_manager }} with pacman
+      shell: bash
+      run: |
+        ${{ github.action_path }}/pacman.sh setup-${{ inputs.package_manager }}
+

@@ -6,4 +6,5 @@ function remove_file() {
 }
 
 remove_file "$HOME/$GRADLE_INIT_SCRIPT_PATH"
-remove_file "$HOME/.m2/settings.xml"
+remove_file "$HOME/$MAVEN_M2_SETTINGS_PATH"
+remove_file "$HOME/$PIP_CONFIG_PATH"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 BASEDIR="`dirname $0`"
 LIBDIR="$BASEDIR/lib"
 
@@ -20,6 +22,7 @@ function print_usage() {
   printf "\t configure-from-env\n"
   printf "\t setup-gradle\n"
   printf "\t setup-maven\n"
+  printf "\t setup-pip\n"
   printf "\t clean\n"
   printf "\n"
   printf "Environment variables:\n"
@@ -86,6 +89,9 @@ function main() {
       ;;
     setup-maven)
       configurePm "maven"
+      ;;
+    setup-pip)
+      configurePm "pip"
       ;;
     clean)
       loadScript "clean"
