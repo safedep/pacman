@@ -13,10 +13,12 @@ function setupPip() {
     print_msg "Writing gateway config in $pipScriptDst"
   fi;
 
+  pypiPath=${GATEWAY_PYPI_PATH:-/pypi}
+
   cat > $pipScriptDst <<_EOF
 [global]
-index = $finalURL/pypi
-index-url = $finalURL/pypi/simple
+index = $finalURL$pypiPath
+index-url = $finalURL$pypiPath/simple
 _EOF
 }
 
