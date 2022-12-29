@@ -15,6 +15,7 @@ function setupPip() {
 
   pypiPath=${GATEWAY_PYPI_PATH:-/pypi}
 
+  mkdir -p `dirname $pipScriptDst`
   cat > $pipScriptDst <<_EOF
 [global]
 index = $finalURL$pypiPath
